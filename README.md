@@ -2,7 +2,9 @@
 
 **August,2nd**
 
-Use a function that is invoked via a cron (every hour) to output GitHub traffic stats which I then use CloudWatch Log Insights to dashboard and get useful info.
+Wanted a way to get the traffic from my GitHub repos, with the minimum of fuss and stuff to manage. Decided that writing a Lambda function was the way to go, accessing the GitHub API. 
+
+This function is invoked via a cron (every hour) to output GitHub traffic stats which I then use CloudWatch Log Insights to dashboard and get useful info. You need to create your GitHub username/token as Environment Variables (defined in the code as GITHUB_USER and GITHUB_TOKEN) within the Lambda console.
 
 ```
 # based from the script at https://github.com/AnthonyBloomer/github-traffic-insights
