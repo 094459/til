@@ -109,5 +109,11 @@ fields @timestamp, @message
 | sort @timestamp, repo_name
 | stats max(count) as views by repo_name
 ```
-
+*Get total clones by repo*
+```
+fields @timestamp, @message
+| filter eventType='Clone'
+| sort @timestamp, repo_name
+| stats max(count) as views by repo_name
+```
 
