@@ -1,5 +1,21 @@
 ### Today I learned (TIL)
 
+**November 11th**
+
+This one is less a TIL and more a "write this down so I do not forget". openssl is a really useful tool when you have to work with SSL/TLS certs, and here are some quick recipes to get some usefule info:
+
+If you need to get the valid hostnames that a certificate hosted on a webserver will accept, use one of the following commands:
+
+*Detailed output*
+```
+openssl s_client -connect $HOST:$PORT -showcerts < /dev/null | openssl x509 -text
+openssl s_client -showcerts -connect $HOST:$PORT </dev/null | openssl x509 -noout -text
+```
+*Just the DNS name attributed to the cert*
+```
+openssl s_client -showcerts -connect $HOST:$PORT </dev/null | openssl x509 -noout -ext subjectAltName
+```
+
 **October, 19th**
 
 When setting up Amazon Cognito to use a custom domain (specifically, your own) you need to make sure that you use the AWS Certificate Manager (ACM) in us-east-1. [This blog post](https://niftytechie.blog/aws/cognito/custom-domain-setup/) captured my issue perfectly.
